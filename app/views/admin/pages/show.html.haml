@@ -1,0 +1,13 @@
+= content_for :title do
+  = @page.slug
+
+%p#notice= notice
+%p
+  %strong Slug:
+  = @page.slug
+%p
+  %strong Type:
+  = @page.type
+= link_to 'Edit', edit_admin_page_path(@page)
+|
+= link_to 'Back', admin_pages_path

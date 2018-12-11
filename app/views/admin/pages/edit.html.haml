@@ -1,0 +1,7 @@
+= content_for :title do
+  Editing
+  = @page.slug
+= render 'form', page: @page
+= link_to 'Show', admin_page_path(@page)
+|
+= link_to 'Back', admin_pages_path
