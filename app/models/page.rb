@@ -1,4 +1,5 @@
 class Page < ApplicationRecord
+  has_many :sections
 end
 
 # 1. Каждая секция имеет markdown и attachments

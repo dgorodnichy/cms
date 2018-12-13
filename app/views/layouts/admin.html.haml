@@ -7,6 +7,8 @@
     = csp_meta_tag
     = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'admin', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'admin'
+    -# = stylesheet_pack_tag 'admin'
     %link{:crossorigin => "anonymous", :href => "https://use.fontawesome.com/releases/v5.5.0/css/all.css", :integrity => "sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU", :rel => "stylesheet"}/
   %body
     %nav.navbar.navbar-dark.fixed-top.bg-dark.flex-md-nowrap.p-0.shadow
@@ -67,3 +69,6 @@
                   %line{:x1 => "3", :x2 => "21", :y1 => "10", :y2 => "10"}
                 This week
           = yield
+
+          %div{data: { controller: "hello" }}
+            %h1{data: { target: "hello.output"}}

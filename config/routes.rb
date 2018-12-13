@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :sections
+  resources :pages
+
   namespace :admin do
-    resources :pages
+    resources :pages do
+      resources :sections
+    end
   end
 end
