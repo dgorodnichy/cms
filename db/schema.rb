@@ -10,14 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_11_085532) do
+ActiveRecord::Schema.define(version: 2018_12_13_204101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "attachments_sections", force: :cascade do |t|
+    t.bigint "section_id"
+    t.bigint "attachment_id"
+    t.index ["attachment_id"], name: "index_attachments_sections_on_attachment_id"
+    t.index ["section_id"], name: "index_attachments_sections_on_section_id"
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string "slug"
     t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.integer "page_id"
+    t.text "content"
+    t.integer "template"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
