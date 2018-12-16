@@ -1,5 +1,6 @@
 class Page < ApplicationRecord
   has_many :sections
+  accepts_nested_attributes_for :sections, reject_if: :all_blank, allow_destroy: true
 end
 
 # 1. Каждая секция имеет markdown и attachments

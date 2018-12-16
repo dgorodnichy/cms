@@ -12,4 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require admin/bootstrap.min.js
+//= require cocoon
+//= require trix
+//= require admin/sections

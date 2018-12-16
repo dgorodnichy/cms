@@ -1,17 +1,26 @@
-= form_with(model: [:admin, page], local: true) do |form|
-  - if page.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(page.errors.count, "error")
-        prohibited this page from being saved:
-      %ul
-        - page.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = form.label :slug
-    = form.text_field :slug
-  .field
-    = form.label :type
-    = form.text_field :type
-  .actions
-    = form.submit
+.row
+  .col-lg-6
+    = form_with(model: [:admin, page], local: true) do |f|
+      - if page.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(page.errors.count, "error")
+            prohibited this page from being saved:
+          %ul
+            - page.errors.full_messages.each do |message|
+              %li= message
+      .form-group
+        = f.label 'Slug', for: :slug
+        = f.text_field :slug, class: 'form-control'
+      .form-group
+        = f.label 'Type', for: :type
+        = f.text_field :type, class: 'form-control'
+      #sections.pt-3
+        = f.fields_for :sections do |section|
+          = render 'section_fields', f: section
+        .text-center.pb-3
+          = link_to_add_association 'add section', f, :sections, class: 'btn btn-secondary'
+      .actions
+        = f.submit 'Save', class: 'btn btn-primary'
+        = link_to 'Show', admin_page_path(@page), class: 'btn btn-default'
+        = link_to 'Back', admin_pages_path, class: 'btn btn-default'

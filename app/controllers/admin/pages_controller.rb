@@ -56,7 +56,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def page_params
-    params.require(:page).permit(:slug, :type)
+    params.require(:page).permit(:slug, :type, sections_attributes: [:id, :content, :template, :_destroy])
   end
 end
 
